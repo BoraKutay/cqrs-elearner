@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.turkcell.elearner.application.features.accountTypes.commands.delete.AccountTypeDeletedEvent;
+import com.turkcell.elearner.application.features.accountTypes.commands.update.AccountTypeUpdatedEvent;
 import com.turkcell.elearner.domain.AccountType;
 import com.turkcell.elearner.persistence.AccountTypeRepository;
 
@@ -24,17 +25,30 @@ public class AccountTypeEventsHandler {
 	
 	@EventHandler
 	public void on(AccountTypeCreatedEvent accountTypeCreatedEvent) {
+		
 		AccountType accountType = new AccountType();
+		
 		BeanUtils.copyProperties(accountTypeCreatedEvent, accountType);
+		
 		this.accountTypeRepository.save(accountType);
 	}
 	
 	@EventHandler
 	public void on(AccountTypeDeletedEvent accountTypeDeletedEvent) {
-		
-		AccountType accountType = this.accountTypeRepository.getById(accountTypeDeletedEvent.getAccountTypeId());
-		System.out.println(accountType.getAccountTypeId());
-		this.accountTypeRepository.delete(accountType);	
+		this.accountTypeRepository.deleteById(accountTypeDeletedEvent.getAccountTypeId());	
+	}
+	
+	@EventHandler
+	public void on(AccountTypeUpdatedEvent accountTypeUpdatedEvent) {
+        
+		AccountType accountType = new AccountType();
+
+        accountType.setAccountTypeId(accountTypeUpdatedEvent.getAccountTypeId());
+        accountType.setAccountName(accountTypeUpdatedEvent.getAccountName());
+        accountType.setPrice(accountTypeUpdatedEvent.getPrice());
+        accountType.setDescription(accountTypeUpdatedEvent.getDescription());
+
+        this.accountTypeRepository.save(accountType);			
 	}
 	
 }

@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Course {
 
 	@Id
-	@Column(name = "id")
+    @Column(name = "id")
 	private String courseId;
 	
 	@Column(name = "course_name")

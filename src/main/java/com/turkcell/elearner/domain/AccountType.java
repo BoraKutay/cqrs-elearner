@@ -2,8 +2,6 @@ package com.turkcell.elearner.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class AccountType {
 
 	@Id
-	@Column(name="id")
+    @Column(name = "id")
 	private String accountTypeId;
 	
 	

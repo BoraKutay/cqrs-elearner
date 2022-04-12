@@ -1,5 +1,6 @@
 package com.turkcell.elearner.application.features.accountTypes.commands.delete;
 
+
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -7,19 +8,17 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
-import com.turkcell.elearner.application.features.accountTypes.commands.create.AccountTypeCreatedEvent;
 
 
 @Aggregate
 public class DeleteAccountTypeAggreagate {
+	
 	@AggregateIdentifier
 	private String accountTypeId;
 
-	public DeleteAccountTypeAggreagate() {
-	}
-	
-	
-	@CommandHandler()
+
+		
+	@CommandHandler
 	public DeleteAccountTypeAggreagate(DeleteAccountTypeCommand deleteAccountTypeCommand) {
 		//business kodları
 		
@@ -36,7 +35,9 @@ public class DeleteAccountTypeAggreagate {
 	@EventSourcingHandler
 	public void on(AccountTypeDeletedEvent accountTypeDeletedEvent) {
 		//event sourcing code 
+		System.out.println("sourcing " + accountTypeDeletedEvent.getAccountTypeId());
 		this.accountTypeId = accountTypeDeletedEvent.getAccountTypeId();
+
 
 	}
 	

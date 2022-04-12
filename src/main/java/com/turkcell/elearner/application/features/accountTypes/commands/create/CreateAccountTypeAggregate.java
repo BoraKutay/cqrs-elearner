@@ -19,7 +19,7 @@ public class CreateAccountTypeAggregate {
 		
 	}
 	
-	@CommandHandler()
+	@CommandHandler
 	public CreateAccountTypeAggregate(CreateAccountTypeCommand createAccountTypeCommand) {
 		//business kodları
 		

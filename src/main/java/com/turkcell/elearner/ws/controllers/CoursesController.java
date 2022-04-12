@@ -1,6 +1,5 @@
 package com.turkcell.elearner.ws.controllers;
 
-import java.util.UUID;
 
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,7 +29,6 @@ public class CoursesController {
 				.category(createCourseModel.getCategory())
 				.build();
 		
-		command.setCourseId(UUID.randomUUID().toString());
 		
 		this.commandGateway.sendAndWait(command);
 	}

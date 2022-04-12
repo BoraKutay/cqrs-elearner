@@ -1,11 +1,13 @@
-package com.turkcell.elearner.application.features.accountTypes.commands.create;
+package com.turkcell.elearner.application.features.accountTypes.commands.update;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class AccountTypeCreatedEvent {
+@Builder
+public class UpdateAccountTypeCommand {
 	@TargetAggregateIdentifier
 	private String accountTypeId;
 	private String accountName;

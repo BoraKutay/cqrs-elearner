@@ -55,7 +55,14 @@
             <groupId>org.axonframework</groupId>
             <artifactId>axon-spring-boot-starter</artifactId>
             <version>4.5.9</version>
+            <exclusions>
+            <exclusion>
+                <groupId>org.axonframework</groupId>
+                <artifactId>axon-server-connector</artifactId>
+            </exclusion>
+        </exclusions>
         </dependency>
+        
 	</dependencies>
 
 	<build>
